@@ -57,6 +57,9 @@ COUCHPOTATO_INSTALL="git clone https://github.com/RuudBurger/CouchPotatoServer.g
 #Headphones
 HEADPHONES_INSTALL="git clone https://github.com/rembo10/headphones.git /opt/headphones"
 
+#Media Scripts
+MEDIA_SCRIPTS="git clone https://github.com/tscrip/MediaServerScripts.git /opt/scripts"
+
 #Defining variables
 whiptailInstalled=false
 gitInstalled=false
@@ -376,13 +379,8 @@ function InstallHTPCManager {
 function InstallMediaScripts {
     printf "Installing Media Scripts\n"
 
-	#Checking if Base package is loaded
-    if [[ "$basePackageInstalled" == false ]]; then
-    	BaseFunction
-
-    	#Setting BaseInstalled flag to true
-    	basePackageInstalled=true
-    fi
+    #Getting Media Scripts via Git
+    $MEDIA_SCRIPTS
 
     printf "##Media Scripts Installed##\n\n"
 }
